@@ -5,7 +5,15 @@ from db_utils.MySQL import MySQLConnector
 
 # Initialize the connection
 postgre_db = PostgreSQLConnector(host='localhost', user='postgres', password='password', database='test_db')
-mysql_db = MySQLConnector(host='localhost', user='root', password='password', database='test_db')
+mysql_db = MySQLConnectorSSH(
+    ssh_host='ssh.example.com',
+    ssh_username='ssh_user',
+    ssh_password='ssh_password',
+    remote_bind_address=('127.0.0.1', 3306),
+    mysql_user='mysql_user',
+    mysql_password='mysql_password',
+    mysql_database='test_db'
+)
 
 # Connect to the database
 postgre_db.connect()
